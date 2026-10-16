@@ -1,0 +1,28 @@
+from openpyxl import Workbook
+
+name = input("Enter student name: ")
+marks = float(input("Enter marks: "))
+
+if marks >= 40:
+    result = "PASS"
+else:
+    result = "FAIL"
+
+print("\nStudent Name:", name)
+print("Marks:", marks)
+print("Result:", result)
+
+workbook = Workbook()
+sheet = workbook.active
+sheet.title = "Student Result"
+
+sheet["A1"] = "Student Name"
+sheet["B1"] = "Marks"
+sheet["C1"] = "Result"
+
+sheet["A2"] = name
+sheet["B2"] = marks
+sheet["C2"] = result
+
+workbook.save("student_result.xlsx")
+print("\nThe Output saved to student_result.xlsx")
